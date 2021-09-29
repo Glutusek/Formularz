@@ -36,17 +36,24 @@ namespace Formularz
             this.surnameLabel = new System.Windows.Forms.Label();
             this.ageLabel = new System.Windows.Forms.Label();
             this.bornDateLabel = new System.Windows.Forms.Label();
-            this.ageTextBox = new System.Windows.Forms.TextBox();
             this.bornDatePicker = new System.Windows.Forms.DateTimePicker();
             this.todayLabel = new System.Windows.Forms.Label();
             this.todayDateTime = new System.Windows.Forms.DateTimePicker();
             this.todayTimer = new System.Windows.Forms.Timer(this.components);
             this.nowTime = new System.Windows.Forms.DateTimePicker();
+            this.checkButton = new System.Windows.Forms.Button();
+            this.userData = new System.Windows.Forms.RichTextBox();
+            this.ageBox = new System.Windows.Forms.NumericUpDown();
+            this.FontBox = new System.Windows.Forms.GroupBox();
+            this.TimesNewRomanFont = new System.Windows.Forms.RadioButton();
+            this.ArialFont = new System.Windows.Forms.RadioButton();
+            ((System.ComponentModel.ISupportInitialize)(this.ageBox)).BeginInit();
+            this.FontBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // surnameTextBox
             // 
-            this.surnameTextBox.Location = new System.Drawing.Point(161, 57);
+            this.surnameTextBox.Location = new System.Drawing.Point(136, 57);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(100, 23);
             this.surnameTextBox.TabIndex = 0;
@@ -70,7 +77,7 @@ namespace Formularz
             // surnameLabel
             // 
             this.surnameLabel.AutoSize = true;
-            this.surnameLabel.Location = new System.Drawing.Point(179, 28);
+            this.surnameLabel.Location = new System.Drawing.Point(150, 28);
             this.surnameLabel.Name = "surnameLabel";
             this.surnameLabel.Size = new System.Drawing.Size(57, 15);
             this.surnameLabel.TabIndex = 3;
@@ -79,7 +86,7 @@ namespace Formularz
             // ageLabel
             // 
             this.ageLabel.AutoSize = true;
-            this.ageLabel.Location = new System.Drawing.Point(334, 27);
+            this.ageLabel.Location = new System.Drawing.Point(292, 27);
             this.ageLabel.Name = "ageLabel";
             this.ageLabel.Size = new System.Drawing.Size(33, 15);
             this.ageLabel.TabIndex = 4;
@@ -88,26 +95,20 @@ namespace Formularz
             // bornDateLabel
             // 
             this.bornDateLabel.AutoSize = true;
-            this.bornDateLabel.Location = new System.Drawing.Point(440, 28);
+            this.bornDateLabel.Location = new System.Drawing.Point(392, 28);
             this.bornDateLabel.Name = "bornDateLabel";
             this.bornDateLabel.Size = new System.Drawing.Size(86, 15);
             this.bornDateLabel.TabIndex = 5;
             this.bornDateLabel.Text = "Data urodzenia";
             // 
-            // ageTextBox
-            // 
-            this.ageTextBox.Location = new System.Drawing.Point(303, 57);
-            this.ageTextBox.Name = "ageTextBox";
-            this.ageTextBox.Size = new System.Drawing.Size(100, 23);
-            this.ageTextBox.TabIndex = 6;
-            // 
             // bornDatePicker
             // 
             this.bornDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.bornDatePicker.Location = new System.Drawing.Point(440, 57);
+            this.bornDatePicker.Location = new System.Drawing.Point(400, 57);
             this.bornDatePicker.Name = "bornDatePicker";
             this.bornDatePicker.Size = new System.Drawing.Size(78, 23);
             this.bornDatePicker.TabIndex = 7;
+            this.bornDatePicker.ValueChanged += new System.EventHandler(this.bornDatePicker_ValueChanged);
             // 
             // todayLabel
             // 
@@ -144,16 +145,80 @@ namespace Formularz
             this.nowTime.Size = new System.Drawing.Size(51, 23);
             this.nowTime.TabIndex = 10;
             // 
+            // checkButton
+            // 
+            this.checkButton.Location = new System.Drawing.Point(109, 148);
+            this.checkButton.Name = "checkButton";
+            this.checkButton.Size = new System.Drawing.Size(117, 41);
+            this.checkButton.TabIndex = 11;
+            this.checkButton.Text = "Wyświetl i zapisz";
+            this.checkButton.UseVisualStyleBackColor = true;
+            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
+            // 
+            // userData
+            // 
+            this.userData.Location = new System.Drawing.Point(41, 205);
+            this.userData.Name = "userData";
+            this.userData.Size = new System.Drawing.Size(255, 246);
+            this.userData.TabIndex = 12;
+            this.userData.Text = "";
+            // 
+            // ageBox
+            // 
+            this.ageBox.Enabled = false;
+            this.ageBox.Location = new System.Drawing.Point(280, 57);
+            this.ageBox.Name = "ageBox";
+            this.ageBox.Size = new System.Drawing.Size(62, 23);
+            this.ageBox.TabIndex = 13;
+            // 
+            // FontBox
+            // 
+            this.FontBox.Controls.Add(this.TimesNewRomanFont);
+            this.FontBox.Controls.Add(this.ArialFont);
+            this.FontBox.Location = new System.Drawing.Point(337, 267);
+            this.FontBox.Name = "FontBox";
+            this.FontBox.Size = new System.Drawing.Size(141, 81);
+            this.FontBox.TabIndex = 14;
+            this.FontBox.TabStop = false;
+            this.FontBox.Text = "Font";
+            // 
+            // TimesNewRomanFont
+            // 
+            this.TimesNewRomanFont.AutoSize = true;
+            this.TimesNewRomanFont.Location = new System.Drawing.Point(7, 49);
+            this.TimesNewRomanFont.Name = "TimesNewRomanFont";
+            this.TimesNewRomanFont.Size = new System.Drawing.Size(124, 19);
+            this.TimesNewRomanFont.TabIndex = 1;
+            this.TimesNewRomanFont.TabStop = true;
+            this.TimesNewRomanFont.Text = "Times New Roman";
+            this.TimesNewRomanFont.UseVisualStyleBackColor = true;
+            this.TimesNewRomanFont.CheckedChanged += new System.EventHandler(this.Font_CheckedChanged);
+            // 
+            // ArialFont
+            // 
+            this.ArialFont.AutoSize = true;
+            this.ArialFont.Location = new System.Drawing.Point(7, 23);
+            this.ArialFont.Name = "ArialFont";
+            this.ArialFont.Size = new System.Drawing.Size(49, 19);
+            this.ArialFont.TabIndex = 0;
+            this.ArialFont.TabStop = true;
+            this.ArialFont.Text = "Arial";
+            this.ArialFont.UseVisualStyleBackColor = true;
+            this.ArialFont.CheckedChanged += new System.EventHandler(this.Font_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 553);
+            this.Controls.Add(this.FontBox);
+            this.Controls.Add(this.ageBox);
+            this.Controls.Add(this.userData);
+            this.Controls.Add(this.checkButton);
             this.Controls.Add(this.nowTime);
             this.Controls.Add(this.todayDateTime);
             this.Controls.Add(this.todayLabel);
             this.Controls.Add(this.bornDatePicker);
-            this.Controls.Add(this.ageTextBox);
             this.Controls.Add(this.bornDateLabel);
             this.Controls.Add(this.ageLabel);
             this.Controls.Add(this.surnameLabel);
@@ -162,6 +227,9 @@ namespace Formularz
             this.Controls.Add(this.surnameTextBox);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.ageBox)).EndInit();
+            this.FontBox.ResumeLayout(false);
+            this.FontBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,12 +243,17 @@ namespace Formularz
         private System.Windows.Forms.Label surnameLabel;
         private System.Windows.Forms.Label ageLabel;
         private System.Windows.Forms.Label bornDateLabel;
-        private System.Windows.Forms.TextBox ageTextBox;
         private System.Windows.Forms.DateTimePicker bornDatePicker;
         private System.Windows.Forms.Label todayLabel;
         private System.Windows.Forms.DateTimePicker todayDateTime;
         private System.Windows.Forms.Timer todayTimer;
         private System.Windows.Forms.DateTimePicker nowTime;
+        private System.Windows.Forms.Button checkButton;
+        private System.Windows.Forms.RichTextBox userData;
+        private System.Windows.Forms.NumericUpDown ageBox;
+        private System.Windows.Forms.GroupBox FontBox;
+        private System.Windows.Forms.RadioButton TimesNewRomanFont;
+        private System.Windows.Forms.RadioButton ArialFont;
     }
 }
 
