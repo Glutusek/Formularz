@@ -15,7 +15,15 @@ namespace Formularz
         public Form1()
         {
             InitializeComponent();
+
+            todayDateTime.Value = DateTime.Now;
+            nowTime.Value = DateTime.Now;
         }
 
+        private void todayTimer_Tick(object sender, EventArgs e)
+        {
+            todayDateTime.Value = DateTime.Now;
+            nowTime.Value = DateTime.Now;
+        }
     }
 }
